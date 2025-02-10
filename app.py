@@ -1,11 +1,13 @@
 from flask import Flask, request, jsonify, send_file
 from pytube import YouTube
 import os
+from flask_cors import CORS
 
 temp_folder = "downloads"
 os.makedirs(temp_folder, exist_ok=True)
 
 app = Flask(__name__)
+CORS(app)
 
 @app.route('/download', methods=['POST'])
 def download_video():
